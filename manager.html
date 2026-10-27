@@ -12,17 +12,17 @@
 <link rel="manifest" href="manifest-manager.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="app.css?v=4">
 </head>
 <body>
 <header class="bar">
   <img alt="Sigla Bazinului 311" src="icon-192.png">
-  <div><h1>Pontaj Bazin 311</h1><p id="subtitlu">Antrenori și instructori</p></div>
+  <div><h1>Pontaj Bazin 311</h1><p id="subtitlu">Panoul managerului</p></div>
 </header>
 
 <main>
   <div id="incarcare" class="card center muted">Se încarcă…</div>
-  <div id="eroare" class="err" hidden></div>
+  <div id="eroare" class="err" role="alert" hidden></div>
 
   <div id="instalare" class="inst" hidden>
     <b>Instalați aplicația pe telefon</b>
@@ -33,35 +33,9 @@
   <!-- Codul managerului (doar dacă lipsește) -->
   <section id="ecranCod" class="card" hidden>
     <h2>Acces manager</h2>
-    <p class="muted small" style="margin:0">Scanați codul QR al managerului sau introduceți codul de acces.</p>
+    <p class="muted small" style="margin:0">Deschideți linkul personal al managerului sau introduceți codul de acces.</p>
     <input id="inCod" type="password" autocomplete="off">
     <button id="btnCod">Intră</button>
-  </section>
-
-  <!-- Prima scanare: angajatul își alege numele -->
-  <section id="ecranAlegere" class="card" hidden>
-    <h2>Alegeți-vă numele</h2>
-    <p class="muted small" style="margin:0">Se face o singură dată. De acum înainte, acest telefon pontează doar pe numele dumneavoastră.</p>
-    <div id="listaNume" class="lista-nume"></div>
-  </section>
-
-  <!-- Pontajul -->
-  <section id="ecranPontaj" hidden>
-    <div class="card">
-      <div class="who"><span class="muted small">Bună ziua,</span><br><b id="txtNume"></b></div>
-      <div class="center"><div class="clock" id="ceas">--:--</div><div class="muted small" id="txtData"></div></div>
-      <div id="txtStare" class="status out"></div>
-    </div>
-    <div class="actions" style="margin-top:16px">
-      <button class="act" id="btnSosire" data-tip="SOSIRE">SOSIRE<small>am ajuns la bazin</small></button>
-      <button class="act" id="btnPlecare" data-tip="PLECARE">PLECARE<small>plec de la bazin</small></button>
-    </div>
-    <div id="confirmare" class="done" style="margin-top:16px" hidden></div>
-    <div class="card" style="margin-top:16px">
-      <h2>Pontajul meu de azi</h2>
-      <ul id="lista"></ul>
-      <p id="gol" class="muted small" style="margin:0">Nu există înregistrări astăzi.</p>
-    </div>
   </section>
 
   <!-- Panoul managerului -->
@@ -69,30 +43,46 @@
     <div class="card">
       <h2>Prezenți acum la bazin</h2>
       <div id="prezenti"></div>
+      <p id="actualizat" class="muted small" style="margin:0"></p>
     </div>
+
     <div class="card">
-      <h2>Pontaje de azi <span id="dataAzi" class="muted small"></span></h2>
-      <ul id="listaAzi"></ul>
+      <h2>Pontaje · <span id="titluZi"></span></h2>
+      <label class="small muted">Ziua<input id="inZi" type="date"></label>
+      <ul id="listaZi"></ul>
+      <details class="adauga">
+        <summary>Adaugă un pontaj</summary>
+        <div class="form-edit">
+          <select id="adNume"></select>
+          <div class="rand2">
+            <input id="adOra" type="time">
+            <select id="adTip"><option value="SOSIRE">SOSIRE</option><option value="PLECARE">PLECARE</option></select>
+          </div>
+          <button id="btnAdauga">Adaugă în ziua aleasă</button>
+        </div>
+      </details>
+      <button id="btnStergeZiua" class="pericol" hidden></button>
     </div>
+
     <div class="card">
       <h2>Pontajul lunii</h2>
       <input id="inLuna" type="month">
       <table><thead><tr><th>Nume</th><th class="n">Zile</th><th class="n">Ore</th></tr></thead><tbody id="tabelLuna"></tbody></table>
-      <p id="incomplete" class="muted small" style="margin:0"></p>
+      <div id="incomplete" class="nota small" hidden></div>
       <a id="lnkDescarca" class="btn" href="#">Descarcă pontajul lunii (Excel)</a>
     </div>
+
     <div class="card">
       <h2>Personal</h2>
-      <p class="muted small" style="margin:0">Dacă cineva își schimbă telefonul, apăsați „Deblochează”, iar angajatul își alege din nou numele pe noul telefon.</p>
+      <p class="muted small" style="margin:0">Dacă cineva își schimbă telefonul, apăsați „Deblochează”; la următoarea scanare a codului QR își alege din nou numele.</p>
       <ul id="listaPersonal"></ul>
     </div>
     <button id="btnReimprospatare" class="btn2">Reîmprospătează</button>
   </section>
 </main>
 
-
 <script>var MOD = "manager";</script>
-<script src="config.js"></script>
-<script src="app.js"></script>
+<script src="config.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
