@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pontaj 311 Manager</title>
+<meta name="theme-color" content="#1F2E5C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Manager 311">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest-manager.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="bar">
+  <img alt="Sigla Bazinului 311" src="icon-192.png">
+  <div><h1>Pontaj Bazin 311</h1><p id="subtitlu">Antrenori și instructori</p></div>
+</header>
+
+<main>
+  <div id="incarcare" class="card center muted">Se încarcă…</div>
+  <div id="eroare" class="err" hidden></div>
+
+  <div id="instalare" class="inst" hidden>
+    <b>Instalați aplicația pe telefon</b>
+    <span id="instText" class="small"></span>
+    <button id="btnInstal" hidden>Instalează aplicația</button>
+  </div>
+
+  <!-- Codul managerului (doar dacă lipsește) -->
+  <section id="ecranCod" class="card" hidden>
+    <h2>Acces manager</h2>
+    <p class="muted small" style="margin:0">Scanați codul QR al managerului sau introduceți codul de acces.</p>
+    <input id="inCod" type="password" autocomplete="off">
+    <button id="btnCod">Intră</button>
+  </section>
+
+  <!-- Prima scanare: angajatul își alege numele -->
+  <section id="ecranAlegere" class="card" hidden>
+    <h2>Alegeți-vă numele</h2>
+    <p class="muted small" style="margin:0">Se face o singură dată. De acum înainte, acest telefon pontează doar pe numele dumneavoastră.</p>
+    <div id="listaNume" class="lista-nume"></div>
+  </section>
+
+  <!-- Pontajul -->
+  <section id="ecranPontaj" hidden>
+    <div class="card">
+      <div class="who"><span class="muted small">Bună ziua,</span><br><b id="txtNume"></b></div>
+      <div class="center"><div class="clock" id="ceas">--:--</div><div class="muted small" id="txtData"></div></div>
+      <div id="txtStare" class="status out"></div>
+    </div>
+    <div class="actions" style="margin-top:16px">
+      <button class="act" id="btnSosire" data-tip="SOSIRE">SOSIRE<small>am ajuns la bazin</small></button>
+      <button class="act" id="btnPlecare" data-tip="PLECARE">PLECARE<small>plec de la bazin</small></button>
+    </div>
+    <div id="confirmare" class="done" style="margin-top:16px" hidden></div>
+    <div class="card" style="margin-top:16px">
+      <h2>Pontajul meu de azi</h2>
+      <ul id="lista"></ul>
+      <p id="gol" class="muted small" style="margin:0">Nu există înregistrări astăzi.</p>
+    </div>
+  </section>
+
+  <!-- Panoul managerului -->
+  <section id="ecranManager" hidden style="display:flex;flex-direction:column;gap:16px">
+    <div class="card">
+      <h2>Prezenți acum la bazin</h2>
+      <div id="prezenti"></div>
+    </div>
+    <div class="card">
+      <h2>Pontaje de azi <span id="dataAzi" class="muted small"></span></h2>
+      <ul id="listaAzi"></ul>
+    </div>
+    <div class="card">
+      <h2>Pontajul lunii</h2>
+      <input id="inLuna" type="month">
+      <table><thead><tr><th>Nume</th><th class="n">Zile</th><th class="n">Ore</th></tr></thead><tbody id="tabelLuna"></tbody></table>
+      <p id="incomplete" class="muted small" style="margin:0"></p>
+      <a id="lnkDescarca" class="btn" href="#">Descarcă pontajul lunii (Excel)</a>
+    </div>
+    <div class="card">
+      <h2>Personal</h2>
+      <p class="muted small" style="margin:0">Dacă cineva își schimbă telefonul, apăsați „Deblochează”, iar angajatul își alege din nou numele pe noul telefon.</p>
+      <ul id="listaPersonal"></ul>
+    </div>
+    <button id="btnReimprospatare" class="btn2">Reîmprospătează</button>
+  </section>
+</main>
+
+
+<script>var MOD = "manager";</script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
