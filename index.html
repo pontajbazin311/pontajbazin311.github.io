@@ -12,7 +12,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="app.css?v=4">
 </head>
 <body>
 <header class="bar">
@@ -22,21 +22,7 @@
 
 <main>
   <div id="incarcare" class="card center muted">Se încarcă…</div>
-  <div id="eroare" class="err" hidden></div>
-
-  <div id="instalare" class="inst" hidden>
-    <b>Instalați aplicația pe telefon</b>
-    <span id="instText" class="small"></span>
-    <button id="btnInstal" hidden>Instalează aplicația</button>
-  </div>
-
-  <!-- Codul managerului (doar dacă lipsește) -->
-  <section id="ecranCod" class="card" hidden>
-    <h2>Acces manager</h2>
-    <p class="muted small" style="margin:0">Scanați codul QR al managerului sau introduceți codul de acces.</p>
-    <input id="inCod" type="password" autocomplete="off">
-    <button id="btnCod">Intră</button>
-  </section>
+  <div id="eroare" class="err" role="alert" hidden></div>
 
   <!-- Prima scanare: angajatul își alege numele -->
   <section id="ecranAlegere" class="card" hidden>
@@ -52,47 +38,26 @@
       <div class="center"><div class="clock" id="ceas">--:--</div><div class="muted small" id="txtData"></div></div>
       <div id="txtStare" class="status out"></div>
     </div>
-    <div class="actions" style="margin-top:16px">
-      <button class="act" id="btnSosire" data-tip="SOSIRE">SOSIRE<small>am ajuns la bazin</small></button>
-      <button class="act" id="btnPlecare" data-tip="PLECARE">PLECARE<small>plec de la bazin</small></button>
+    <div id="scaneaza" class="nota" style="margin-top:16px" hidden>
+      <b>Scanați codul QR afișat la bazin</b>
+      Deschideți Camera telefonului, îndreptați-o spre codul QR și apăsați pe linkul care apare. Codul se scanează la fiecare SOSIRE și la fiecare PLECARE.
     </div>
-    <div id="confirmare" class="done" style="margin-top:16px" hidden></div>
+    <div class="actions" style="margin-top:16px">
+      <button class="act" id="btnSosire" data-tip="SOSIRE" disabled>SOSIRE<small>am ajuns la bazin</small></button>
+      <button class="act" id="btnPlecare" data-tip="PLECARE" disabled>PLECARE<small>plec de la bazin</small></button>
+    </div>
+    <div id="confirmare" class="done" role="status" style="margin-top:16px" hidden></div>
     <div class="card" style="margin-top:16px">
       <h2>Pontajul meu de azi</h2>
       <ul id="lista"></ul>
       <p id="gol" class="muted small" style="margin:0">Nu există înregistrări astăzi.</p>
     </div>
-  </section>
-
-  <!-- Panoul managerului -->
-  <section id="ecranManager" hidden style="display:flex;flex-direction:column;gap:16px">
-    <div class="card">
-      <h2>Prezenți acum la bazin</h2>
-      <div id="prezenti"></div>
-    </div>
-    <div class="card">
-      <h2>Pontaje de azi <span id="dataAzi" class="muted small"></span></h2>
-      <ul id="listaAzi"></ul>
-    </div>
-    <div class="card">
-      <h2>Pontajul lunii</h2>
-      <input id="inLuna" type="month">
-      <table><thead><tr><th>Nume</th><th class="n">Zile</th><th class="n">Ore</th></tr></thead><tbody id="tabelLuna"></tbody></table>
-      <p id="incomplete" class="muted small" style="margin:0"></p>
-      <a id="lnkDescarca" class="btn" href="#">Descarcă pontajul lunii (Excel)</a>
-    </div>
-    <div class="card">
-      <h2>Personal</h2>
-      <p class="muted small" style="margin:0">Dacă cineva își schimbă telefonul, apăsați „Deblochează”, iar angajatul își alege din nou numele pe noul telefon.</p>
-      <ul id="listaPersonal"></ul>
-    </div>
-    <button id="btnReimprospatare" class="btn2">Reîmprospătează</button>
+    <p id="notaInstalata" class="muted small center" hidden>Pentru pontaj nu folosiți pictograma de pe ecran: scanați de fiecare dată codul QR de la bazin cu Camera telefonului.</p>
   </section>
 </main>
 
-
 <script>var MOD = "angajat";</script>
-<script src="config.js"></script>
-<script src="app.js"></script>
+<script src="config.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
