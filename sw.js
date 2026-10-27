@@ -1,6 +1,6 @@
 // Păstrează aplicația pe telefon, ca să pornească repede. Pontajele se trimit mereu online.
 const VERSIUNE = 'pontaj311-v2';
-const FISIERE = ['./', 'index.html', 'manager.html', 'app.js', 'app.css', 'config.js', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+const FISIERE = ['./', 'index.html', 'app.js', 'app.css', 'config.js', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSIUNE).then(c => c.addAll(FISIERE)).then(() => self.skipWaiting()));
 });
