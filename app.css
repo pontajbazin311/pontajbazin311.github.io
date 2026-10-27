@@ -41,3 +41,15 @@ a.btn{display:block;text-align:center;text-decoration:none;font-weight:700;borde
 .inst{background:var(--aqua-soft);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .inst b{color:var(--navy)}
 .inst button{padding:12px}
+.nota{background:#FBF0DA;color:#6B4A00;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.nota b{color:#4A3300}
+.act:disabled{opacity:.45}
+select{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:12px;width:100%}
+label{display:flex;flex-direction:column;gap:4px}
+.rand-edit{align-items:center;flex-wrap:wrap}
+.act-mici{display:flex;gap:6px}
+.mic2{width:auto;padding:8px 12px;font-size:.85rem;border-radius:10px;background:var(--surface);color:var(--navy);border:1.5px solid var(--navy)}
+.form-edit{display:flex;flex-direction:column;gap:10px;width:100%;padding-top:10px}
+.rand2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+details.adauga summary{cursor:pointer;font-weight:700;color:var(--navy);padding:8px 0}
+.pericol{background:var(--surface);color:var(--bad);border:1.5px solid var(--bad);font-size:.95rem;padding:12px}
